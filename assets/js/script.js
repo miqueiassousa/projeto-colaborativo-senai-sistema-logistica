@@ -37,3 +37,13 @@
 // next.addEventListener('click' , nextSlider);
 // back.addEventListener('click'   , backSlider);
 
+function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    if (username === "admin" && password === "password") {
+        alert("Login successful!");
+        window.location.href = "index.html"; // Redirect to dashboard or another page
+    } else {
+        alert("Invalid username or password.");
+    }
+}
