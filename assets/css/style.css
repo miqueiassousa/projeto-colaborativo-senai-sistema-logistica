@@ -1,0 +1,143 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-slider{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-images{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+}
+
+.slider{
+    opacity: 0;
+    position : absolute;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.on{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#back, #next{
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#back img, #next img{
+    width: 100%;
+    height: 100%;
+} */
+
+/* TELA DE LOGIN */
+
+/* 1. Reset Básico e Fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+    font-family: Arial, sans-serif;
+}
+
+/* 2. Estilo do Corpo (Centralização) */
+body {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    background-color: #f4f7f6; /* Cor de fundo suave */
+}
+
+/* 3. Contêiner Principal (O Cartão de Login) */
+.login-container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px;
+    border-radius: 12px; /* Bordas arredondadas (moderno!) */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidade */
+    width: 100%;
+    max-width: 380px; /* Largura máxima controlada */
+    text-align: center;
+}
+
+/* 4. Título */
+h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* 5. Agrupamento de Inputs */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block; /* Garante que o rótulo ocupe a linha toda */
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 6. Estilo dos Campos de Entrada */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordas levemente arredondadas */
+    font-size: 16px;
+    transition: border-color 0.3s; /* Transição suave para o efeito de foco */
+}
+
+.input-group input:focus {
+    border-color: #007bff; /* Cor azul suave ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+/* 7. Estilo do Botão */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff; /* Azul primário moderno */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* Escurece um pouco ao passar o mouse */
+}
+
+/* 8. Link de Senha */
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
