@@ -150,12 +150,12 @@ h2 {
 }
  
  header {
-    background-color: #4CAF50; /* Cor de fundo do cabeçalho */
+    background-color: #4CAF50; 
     color: white; /* Cor do texto */
     padding: 15px 0; /* Espaçamento interno */
     text-align: center; /* Centraliza o texto */
     font-size: 24px; /* Tamanho da fonte */
-    font-weight: bold; /* Negrito */
+    font-weight: bold; 
 }
 
 .daddyCabinets {
@@ -166,7 +166,3 @@ h2 {
     background-color: #f4f7f6; /* C  r de fundo suave */
 }
 
-.cabinets {
-    flex: 1;
-
-}
