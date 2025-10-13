@@ -1,72 +1,72 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* Inclui padding e border na largura total dos elementos */
 }
 
 /* ---------- TELA DE LOGIN ----------*/
 
- #loginBody {
+#loginBody{
     display: flex;
-    justify-content: center; 
-    align-items: center;
-    min-height: 100vh; 
-    background-color: #f4f7f6;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    background-color: #f4f7f6; /* Cor de fundo suave */
 }
 
-
-.login-container {
+ .login-container {
     background-color: #ffffff; 
     padding: 40px;
-    border-radius: 12px; 
+    border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
     width: 100%;
     max-width: 380px;
     text-align: center;
 }
 
-
+/* 4. Título */
 h2 {
     margin-bottom: 30px;
     color: #333;
 }
 
-
+/* 5. Agrupamento de Inputs */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
 }
 
 .input-group label {
-    display: block; 
+    display: block; /* Garante que o rótulo ocupe a linha toda */
     margin-bottom: 8px;
     color: #555;
     font-size: 14px;
     font-weight: bold;
 }
 
-
+/* 6. Estilo dos Campos de Entrada */
 .input-group input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 6px; 
+    border-radius: 6px; /* Bordas levemente arredondadas */
     font-size: 16px;
-    transition: border-color 0.3s; 
+    transition: border-color 0.3s; /* Transição suave para o efeito de foco */
 }
 
 .input-group input:focus {
-    border-color: #007bff; 
-    outline: none; 
+    border-color: #007bff; /* Cor azul suave ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
 }
 
-
+/* 7. Estilo do Botão */
 .login-button {
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 6px;
-    background-color: #007bff; 
+    background-color: #007bff; /* Azul primário moderno */
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -76,21 +76,21 @@ h2 {
 }
 
 .login-button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Escurece um pouco ao passar o mouse */
 }
 
-
+/* 8. Link de Senha */
 .forgot-password {
     display: block;
     margin-top: 20px;
     font-size: 14px;
     color: #007bff;
-    text-decoration: none;
+    text-decoration: none; /* Remove o sublinhado */
 }
 
 .forgot-password:hover {
     text-decoration: underline;
-} 
+}
 
  /* ---------- PÁGINA PRINCIPAL ----------  */
 
@@ -118,7 +118,7 @@ h2 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: yellow;
+    background-color: #ffeb3b; /* yellow */
 }
 
 .containerSlider{
@@ -126,7 +126,7 @@ h2 {
     align-items: center;
     justify-content: center;
     flex: 3;
-    background-color: aqua;
+    background-color: #00ffff;
     height: 100%;
 }
 
@@ -146,7 +146,7 @@ h2 {
 .buttonsCarrousel{
     flex: 1;
     border: none;
-    background-color: blue;
+    background-color: #007bff;
     cursor: pointer;
 }
 

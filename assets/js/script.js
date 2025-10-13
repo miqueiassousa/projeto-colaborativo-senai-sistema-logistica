@@ -34,10 +34,14 @@ function backSlider(){
     showSlider();
 }
 
-console.log(slider);
+next.addEventListener('click' , nextSlider);
+back.addEventListener('click'   , backSlider);
 
-// next.addEventListener('click' , nextSlider);
-// back.addEventListener('click'   , backSlider);
+function forgotPassword() {
+    alert("Usuário: admin\nSenha: password");
+}
+
+//---------- LOGIN ----------//
 
 function forgotPassword() {
     alert("Usuário: admin\nSenha: password");
