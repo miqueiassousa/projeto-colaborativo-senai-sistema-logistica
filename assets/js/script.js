@@ -14,6 +14,7 @@ function showSlider() {
     slider[currentSlide].classList.add('on');
 }
 
+// MIQUÉIAS
 
 function nextSlider(){
     hideSlider();
