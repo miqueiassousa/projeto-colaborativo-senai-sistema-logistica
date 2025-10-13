@@ -1,62 +1,13 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.container-slider{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container-images{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-}
-
-.slider{
-    opacity: 0;
-    position : absolute;
-    width: 100%;
-    border-radius: 10px;
-}
-
-.on{
-    opacity: 1;
-    transition: opacity 1s;
-}
-
-#back, #next{
-    width: 50px;
-    height: 50px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#back img, #next img{
-    width: 100%;
-    height: 100%;
-} */
-
-/* TELA DE LOGIN */
-
-/* 1. Reset Básico e Fontes */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* Inclui padding e border na largura total dos elementos */
 }
 
-/* 2. Estilo do Corpo (Centralização) */
-body {
+/* ---------- TELA DE LOGIN ----------*/
+
+#loginBody{
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
@@ -64,14 +15,13 @@ body {
     background-color: #f4f7f6; /* Cor de fundo suave */
 }
 
-/* 3. Contêiner Principal (O Cartão de Login) */
-.login-container {
-    background-color: #ffffff; /* Fundo branco */
+ .login-container {
+    background-color: #ffffff; 
     padding: 40px;
-    border-radius: 12px; /* Bordas arredondadas (moderno!) */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidade */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
     width: 100%;
-    max-width: 380px; /* Largura máxima controlada */
+    max-width: 380px;
     text-align: center;
 }
 
@@ -141,3 +91,82 @@ h2 {
 .forgot-password:hover {
     text-decoration: underline;
 }
+
+ /* ---------- PÁGINA PRINCIPAL ----------  */
+
+#mainPageBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+ 
+ header {
+    background-color: #4CAF50; 
+    width: 100%;
+    color: white; 
+    text-align: center; 
+    font-size: 24px; 
+    font-weight: bold; 
+}
+
+.containerCarrousel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffeb3b; /* yellow */
+}
+
+.containerSlider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+    background-color: #00ffff;
+    height: 100%;
+}
+
+.slider{
+    display: none;
+    width: 80%;
+}
+
+.slider img{
+    width: 100%;
+}
+
+.on{
+    display: block;
+}
+
+.buttonsCarrousel{
+    flex: 1;
+    border: none;
+    background-color: #007bff;
+    cursor: pointer;
+}
+
+.buttonsCarrousel img{
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: #f1f1f1; 
+    text-align: center; 
+    width: 100%;
+    font-size: 14px; 
+    color: #555; 
+    line-height: 1.6;
+}
+
+
+
+
+
+
+
