@@ -14,6 +14,7 @@ function showSlider() {
     slider[currentSlide].classList.add('on');
 }
 
+
 function nextSlider(){
     hideSlider();
     if(currentSlide == slider.length -1){
