@@ -1,122 +1,72 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.container-slider{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container-images{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-}
-
-.slider{
-    opacity: 0;
-    position : absolute;
-    width: 100%;
-    border-radius: 10px;
-}
-
-.on{
-    opacity: 1;
-    transition: opacity 1s;
-}
-
-#back, #next{
-    width: 50px;
-    height: 50px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#back img, #next img{
-    width: 100%;
-    height: 100%;
-} */
-
-/* TELA DE LOGIN */
-
-/* 1. Reset Básico e Fontes */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
     font-family: Arial, sans-serif;
 }
 
-/* 2. Estilo do Corpo (Centralização) */
-#loginBody {
+/* ---------- TELA DE LOGIN ----------*/
+
+ #loginBody {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    min-height: 100vh; /* Ocupa a altura total da viewport */
-    background-color: #f4f7f6; /* Cor de fundo suave */
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f4f7f6;
 }
 
-/* 3. Contêiner Principal (O Cartão de Login) */
+
 .login-container {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff; 
     padding: 40px;
-    border-radius: 12px; /* Bordas arredondadas (moderno!) */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidade */
+    border-radius: 12px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
     width: 100%;
-    max-width: 380px; /* Largura máxima controlada */
+    max-width: 380px;
     text-align: center;
 }
 
-/* 4. Título */
+
 h2 {
     margin-bottom: 30px;
     color: #333;
 }
 
-/* 5. Agrupamento de Inputs */
+
 .input-group {
     margin-bottom: 20px;
     text-align: left;
 }
 
 .input-group label {
-    display: block; /* Garante que o rótulo ocupe a linha toda */
+    display: block; 
     margin-bottom: 8px;
     color: #555;
     font-size: 14px;
     font-weight: bold;
 }
 
-/* 6. Estilo dos Campos de Entrada */
+
 .input-group input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 6px; /* Bordas levemente arredondadas */
+    border-radius: 6px; 
     font-size: 16px;
-    transition: border-color 0.3s; /* Transição suave para o efeito de foco */
+    transition: border-color 0.3s; 
 }
 
 .input-group input:focus {
-    border-color: #007bff; /* Cor azul suave ao focar */
-    outline: none; /* Remove o contorno padrão do navegador */
+    border-color: #007bff; 
+    outline: none; 
 }
 
-/* 7. Estilo do Botão */
+
 .login-button {
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 6px;
-    background-color: #007bff; /* Azul primário moderno */
+    background-color: #007bff; 
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -126,43 +76,97 @@ h2 {
 }
 
 .login-button:hover {
-    background-color: #0056b3; /* Escurece um pouco ao passar o mouse */
+    background-color: #0056b3;
 }
 
-/* 8. Link de Senha */
+
 .forgot-password {
     display: block;
     margin-top: 20px;
     font-size: 14px;
     color: #007bff;
-    text-decoration: none; /* Remove o sublinhado */
+    text-decoration: none;
 }
 
 .forgot-password:hover {
     text-decoration: underline;
-}
+} 
 
- /* PáGINA PRINCIPAL  */
+ /* ---------- PÁGINA PRINCIPAL ----------  */
 
-#mainBody{
+#mainPageBody{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
 }
  
  header {
     background-color: #4CAF50; 
-    color: white; /* Cor do texto */
-    padding: 15px 0; /* Espaçamento interno */
-    text-align: center; /* Centraliza o texto */
-    font-size: 24px; /* Tamanho da fonte */
+    width: 100%;
+    color: white; 
+    text-align: center; 
+    font-size: 24px; 
     font-weight: bold; 
 }
 
-.daddyCabinets {
+.containerCarrousel{
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f4f7f6; /* C  r de fundo suave */
+    background-color: yellow;
 }
+
+.containerSlider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+    background-color: aqua;
+    height: 100%;
+}
+
+.slider{
+    display: none;
+    width: 80%;
+}
+
+.slider img{
+    width: 100%;
+}
+
+.on{
+    display: block;
+}
+
+.buttonsCarrousel{
+    flex: 1;
+    border: none;
+    background-color: blue;
+    cursor: pointer;
+}
+
+.buttonsCarrousel img{
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: #f1f1f1; 
+    text-align: center; 
+    width: 100%;
+    font-size: 14px; 
+    color: #555; 
+    line-height: 1.6;
+}
+
+
+
+
+
+
 
