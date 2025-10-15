@@ -197,13 +197,13 @@
 }
 
 /* HEADER */
-header {
+#headerMainPage {
    background-image: url(../images/headerMainPage.png);
    background-color: #919191;
    background-position: center;
    background-repeat: no-repeat;
    width: 100%;
-   height: 20vh;
+   height: 25vh;
 }
 
 /* CARROSSEL */
@@ -255,33 +255,6 @@ header {
     height: 100%;
 }
 
-/*  FOOTER */
-footer {
-    background-color: #f1f1f1;
-    text-align: center;
-    width: 100%;
-    font-size: 12px;
-    color: #555;
-    line-height: 1.2;
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-}
-
-footer img {
-    width: 150px;
-}
-
-#imgFooter {
-    width: 100%;
-    height: auto;
-}
-
-#textFooter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-}
 
 /* ---------- RESPONSIVIDADE ---------- */
 
@@ -297,6 +270,7 @@ footer img {
 
     header {
         height: 20vh;
+        background-size: 25%;
     }
 
     .containerSlider {
@@ -314,3 +288,112 @@ footer img {
         display: none;
     }
 }
+
+/* PÁGINA INDIVIDUAL DE CADA ARMÁRIO*/
+
+#bodyPageCabinet {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   min-height: 100vh;
+}
+
+#headerPageCabinet {
+   background-image: url(../images/headerCabinet1.png);
+   background-color: #919191;
+   background-position: top center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 20vh;
+}
+
+.containerCabinet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* background-color: aqua; */
+    width: 100%;
+    height: 70vh;
+}
+
+/*COLUNAS*/
+
+.cabinetColumn1{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* background-color: rgb(71, 255, 80); */
+}
+
+.cabinetColumn2{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* background-color: tomato; */
+}
+
+.cabinetColumn3{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* background-color: rgb(74, 71, 255); */
+}
+
+/*CÉLULAS*/
+
+.cell{
+    background-color: rgb(204, 164, 164);
+    height: 15vh;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+}
+
+.cell h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+.cell p {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+}
+
+/* CORES DAS CÉLULAS ATRIBUIDAS COM A LÓGICA DO JAVASCRIPT*/
+
+.cellred{
+    background-color: #ff3131;
+}
+
+.cellYellow{
+    background-color: #ffeb3b;
+}
+
+.cellGreen{
+    background-color: #4caf50;
+}
+
+/* ---------- FOOTER TODAS AS PÁGINAS ---------- */
+
+footer {
+    width: 100%;
+    background-color: #d3d8d6;
+    text-align: center;
+    align-items: center;
+}
+
+footer p {
+    color: #555;
+    font-size: 12px;
+    padding: 5px 0 5px 5px;
+}
+
+footer img {
+    width: 120px;
+    height: auto;
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
