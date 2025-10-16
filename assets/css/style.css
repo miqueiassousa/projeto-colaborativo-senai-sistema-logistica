@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../fonts/RobotoSlab-Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif; /* Inclui padding e border na largura total dos elementos */
+    font-family: 'Roboto Slab', serif; /* Inclui padding e border na largura total dos elementos */
 }
 
 /* ---------- TELA DE LOGIN ----------*/
@@ -69,7 +76,7 @@
 }
 
 .input-group input:focus {
-    border-color: #007bff;
+    border-color: #0e4194;
     outline: none;
 }
 
@@ -79,7 +86,7 @@
     padding: 12px;
     border: none;
     border-radius: 6px;
-    background-color: #007bff;
+    background-color:#0e4194;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -89,7 +96,7 @@
 }
 
 .login-button:hover {
-    background-color: #0056b3;
+    background-color:#0e4194;
 }
 
 /*  LINK DE ESQUECEU SENHA  */
@@ -97,7 +104,7 @@
     display: block;
     margin-top: 20px;
     font-size: 14px;
-    color: #007bff;
+    color: #0e4194;
     text-decoration: none;
     text-align: center;
 }
@@ -118,7 +125,7 @@
 /*  LOGIN BANNER  */
 .login-banner {
     flex: 1;
-    background: linear-gradient(135deg, #007bff, #00c6ff);
+    background: linear-gradient(135deg, #0e4194, #a3bde6);
     color: white;
     display: flex;
     flex-direction: column;
@@ -192,18 +199,31 @@
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
-    /* background-color: #0e4194; */
-    
+    background-color: #ffffff;
 }
 
 /* HEADER */
-#headerMainPage {
-   background-image: url(../images/headerMainPage.png);
-   background-color: #919191;
+#headerMainPage { 
+   background: linear-gradient(135deg, #0e4194, #a3bde6);
    background-position: center;
    background-repeat: no-repeat;
    width: 100%;
-   height: 25vh;
+   height: 12vh;
+}
+
+#headerMainPage h1 {
+    font-family:  'Roboto Slab', serif;
+    font-size: 2.5em;
+    text-align: center;
+    padding-top: 10px;
+    color: #ffffff;
+}
+
+#headerMainPage h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    text-align: center;
+    color: #ffffff;
 }
 
 /* CARROSSEL */
@@ -228,7 +248,6 @@
 .slider {
     flex: 0 0 100%; /* mobile: 1 slide */
     display: none;  /* JS controla o slide ativo */
-    transition: transform 0.5s ease;
 }
 
 .slider.on {
@@ -268,11 +287,6 @@
 /* Desktop: mostrar 4 slides */
 @media (min-width: 992px) {
 
-    header {
-        height: 20vh;
-        background-size: 25%;
-    }
-
     .containerSlider {
         justify-content: space-between;
         width: 100%;
@@ -289,9 +303,9 @@
     }
 }
 
-/* PÁGINA INDIVIDUAL DE CADA ARMÁRIO*/
+/* ---------- PÁGINA INDIVIDUAL DE CADA ARMÁRIO ---------- */
 
-#bodyPageCabinet {
+.bodyPageCabinet {
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -299,14 +313,62 @@
    min-height: 100vh;
 }
 
-#headerPageCabinet {
-   background-image: url(../images/headerCabinet1.png);
-   background-color: #919191;
+/*COR DO BODY DE CADA ARMÁRIO*/
+
+#bodyCabinet1 {
+    background-color: #a3bde6
+}
+
+#bodyCabinet2 {
+    background-color: #ff5c5c
+}
+
+#bodyCabinet3 {
+    background-color:#f8ec7d
+}
+
+#bodyCabinet4 {
+    background-color: #4caf50
+}
+
+
+/* HEADER */
+
+.headerPageCabinet{
    background-position: top center;
    background-repeat: no-repeat;
    width: 100%;
-   height: 20vh;
+   height: 10vh;
 }
+
+.headerPageCabinet h1 {
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+/*COR DO HEADER DE CADA ARMÁRIO*/
+
+#headerPageCabinet1 {
+    background-color: #0e4194
+}
+
+#headerPageCabinet2 {
+    background-color: #a20909
+}
+
+#headerPageCabinet3 {
+    background-color: #8f8103;
+}
+
+#headerPageCabinet4 {
+    background-color: #004703
+}
+
+
+/*CONTAINER DO ARMÁRIO*/
 
 .containerCabinet {
     display: grid;
@@ -316,7 +378,7 @@
     height: 70vh;
 }
 
-/*COLUNAS*/
+/*COLUNAS DO ARMÁRIO*/
 
 .cabinetColumn1{
     display: grid;
@@ -336,10 +398,10 @@
     /* background-color: rgb(74, 71, 255); */
 }
 
-/*CÉLULAS*/
+/*CÉLULAS DO ARMÁRIO*/
 
 .cell{
-    background-color: rgb(204, 164, 164);
+    background-color: rgb(253, 253, 253);
     height: 15vh;
     margin: 10px;
     border-radius: 10px;
@@ -353,13 +415,13 @@
 .cell h3 {
     text-align: center;
     margin-top: 10px;
-    color: #333;
+    color: #ffffff;
 }
 
 .cell p {
     text-align: center;
     margin-top: 15px;
-    color: #666;
+    color: #ffffff;
 }
 
 /* CORES DAS CÉLULAS ATRIBUIDAS COM A LÓGICA DO JAVASCRIPT*/
@@ -376,13 +438,15 @@
     background-color: #4caf50;
 }
 
-/* ---------- FOOTER TODAS AS PÁGINAS ---------- */
+/* ---------- FOOTER DE TODAS AS PÁGINAS ---------- */
 
 footer {
-    width: 100%;
-    background-color: #d3d8d6;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    background-color: #ff5e00;
+    text-align: center;
 }
 
 footer p {
