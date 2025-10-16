@@ -244,7 +244,7 @@
 .buttonsCarrousel {
     flex: 0 0 40px;
     border: none;
-    /* background-color: #007bff; */
+    background-color: #ffffff;
     cursor: pointer;
     padding: 5px;
     border-radius: 6px;
