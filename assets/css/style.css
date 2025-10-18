@@ -423,12 +423,12 @@ footer,
 }
 @media (max-width: 600px) {
     .containerCabinet {
-        grid-template-columns: repeat(3, 1fr); /* 2 colunas */
+        grid-template-columns: repeat(3, 1fr);
         gap: 10px;
         padding: 0 10px; 
     }
 
     .containerCabinet .cell {
-        min-height: 120px; /* ajuste de altura se necessário */
-    }
+        min-height: 120px;
+}
 }

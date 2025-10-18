@@ -26,6 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("togglePassword ou passwordInput não encontrados!");
     }
 });
+function showArmario(index) {
+    hideSlider(); // esconde todos
+    currentSlide = index; 
+    slider[currentSlide].classList.add('on');
+    initSlider(); // recalcula tamanho e visibilidade
+}
+
 
 // ---------- Esqueci a senha ---------- //
 function forgotPassword() {
@@ -88,52 +95,56 @@ function forgotPasswordPopup() {
 }
 
 // ---------- CARROSSEL ---------- //
-const slider = document.querySelectorAll('.slider');
-const next = document.getElementById('next');
-const back = document.getElementById('back');
-let currentSlide = 0;
+document.addEventListener("DOMContentLoaded", () => {
+    const next = document.getElementById('next');
+    const back = document.getElementById('back');
+    const slider = document.querySelectorAll('.slider');
 
-function hideSlider() {
-    slider.forEach(item => item.classList.remove('on'));
-}
+    let currentSlide = 0;
 
-function initSlider() {
-    const width = window.innerWidth;
-
-    if (width >= 992) {
-        slider.forEach(item => item.classList.add('on'));
-        next.style.display = "none";
-        back.style.display = "none";
-    } else {
+    function hideSlider() {
         slider.forEach(item => item.classList.remove('on'));
-        currentSlide = 0;
-
-        const visibleSlides = 1; // sempre 1 slide no mobile
-        slider[currentSlide].classList.add('on');
-
-        next.style.display = "block";
-        back.style.display = "block";
     }
-}
 
-function nextSlider() {
-    hideSlider();
-    currentSlide++;
-    if (currentSlide >= slider.length) currentSlide = 0;
-    slider[currentSlide].classList.add('on');
-}
+    function initSlider() {
+        const width = window.innerWidth;
 
-function backSlider() {
-    hideSlider();
-    currentSlide--;
-    if (currentSlide < 0) currentSlide = slider.length - 1;
-    slider[currentSlide].classList.add('on');
-}
+        if (width >= 992) {
+            slider.forEach(item => item.classList.add('on'));
+            if (next) next.style.display = "none";
+            if (back) back.style.display = "none";
+        } else {
+            slider.forEach(item => item.classList.remove('on'));
+            currentSlide = 0;
 
-next.addEventListener('click', nextSlider);
-back.addEventListener('click', backSlider);
-window.addEventListener('resize', initSlider);
-window.addEventListener('load', initSlider);
+            slider[currentSlide].classList.add('on');
+
+            if (next) next.style.display = "block";
+            if (back) back.style.display = "block";
+        }
+    }
+
+    function nextSlider() {
+        hideSlider();
+        currentSlide++;
+        if (currentSlide >= slider.length) currentSlide = 0;
+        slider[currentSlide].classList.add('on');
+    }
+
+    function backSlider() {
+        hideSlider();
+        currentSlide--;
+        if (currentSlide < 0) currentSlide = slider.length - 1;
+        slider[currentSlide].classList.add('on');
+    }
+
+    if (next) next.addEventListener('click', nextSlider);
+    if (back) back.addEventListener('click', backSlider);
+
+    window.addEventListener('resize', initSlider);
+    window.addEventListener('load', initSlider);
+});
+
 
 // ---------- POPUP DE ESTOQUE ---------- //
 function abrirPopup(elemento) {
