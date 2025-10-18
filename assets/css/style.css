@@ -421,19 +421,14 @@ footer,
         min-height: calc(100vh - 50px); 
     }
 }
-/* -------------------- Armários Responsivos Extras -------------------- */
-@media (max-width: 950px) {
-    .containerCabinet {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 600px) {
     .containerCabinet {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr); /* 2 colunas */
+        gap: 10px;
+        padding: 0 10px; 
     }
 
     .containerCabinet .cell {
-        min-height: 100px;
+        min-height: 120px; /* ajuste de altura se necessário */
     }
 }
