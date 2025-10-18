@@ -1,0 +1,478 @@
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../fonts/RobotoSlab-Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif; /* Inclui padding e border na largura total dos elementos */
+}
+
+/* ---------- TELA DE LOGIN ----------*/
+
+/*  BODY  */
+#loginBody {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f7f6;
+    padding: 20px;
+}
+
+/*  WRAPPER  */
+.login-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/*  LOGIN CONTAINER  */
+.login-container {
+    flex: 1;
+    padding: 40px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-container h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+    text-align: center;
+}
+
+/*  INPUTS  */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #0e4194;
+    outline: none;
+}
+
+/*  BOTÃO  */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color:#0e4194;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color:#0e4194;
+}
+
+/*  LINK DE ESQUECEU SENHA  */
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #0e4194;
+    text-decoration: none;
+    text-align: center;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/*  MENSAGEM DE ERRO  */
+#loginError {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    display: none;
+}
+
+/*  LOGIN BANNER  */
+.login-banner {
+    flex: 1;
+    background: linear-gradient(135deg, #0e4194, #a3bde6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-banner h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.login-banner p {
+    font-size: 18px;
+    max-width: 300px;
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .login-wrapper {
+        flex-direction: column;
+        max-width: 480px;
+    }
+
+    .login-banner {
+        display: none;
+    }
+
+    .login-container {
+        border-radius: 12px;
+        padding: 35px;
+    }
+
+    .login-container h2 {
+        font-size: 26px;
+    }
+
+    .input-group input,
+    .login-button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 30px;
+    }
+
+    .login-container h2 {
+        font-size: 24px;
+    }
+
+    .input-group input,
+    .login-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+ /* ---------- PÁGINA PRINCIPAL ----------  */
+
+#mainPageBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* HEADER */
+#headerMainPage { 
+   background: linear-gradient(135deg, #0e4194, #a3bde6);
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 10vh;
+}
+
+#headerMainPage h1 {
+    font-family:  'Roboto Slab', serif;
+    font-size: 2.5em;
+    text-align: center;
+    color: #ffffff;
+}
+
+#headerMainPage h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+/* CARROSSEL */
+.containerCarrousel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.containerSlider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre slides */
+    width: 80%;
+    overflow: hidden;
+}
+
+/* CADA SLIDE */
+.slider {
+    flex: 0 0 100%; /* mobile: 1 slide */
+    display: none;  /* JS controla o slide ativo */
+}
+
+.slider.on {
+    display: block;
+}
+
+.slider img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* BOTÕES DE NAVEGAÇÃO */
+.buttonsCarrousel {
+    flex: 0 0 40px;
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.buttonsCarrousel img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ---------- RESPONSIVIDADE ---------- */
+
+/* Tablet: mostrar 2 slides */
+@media (min-width: 600px) and (max-width: 932px) {
+
+    #headerMainPage{
+        height: 20vh;
+    }
+
+    .slider {
+        flex: 0 0 48%;
+    }
+}
+
+/* Desktop: mostrar 4 slides */
+@media (min-width: 933px) {
+
+    #headerMainPage{
+        height: 10vh;
+    }
+
+    .containerSlider {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .slider {
+        flex: 0 0 23%;
+        display: block !important; /* todos visíveis */
+    }
+
+    /* Oculta botões */
+    #next, #back {
+        display: none;
+    }
+}
+
+/* ---------- PÁGINA INDIVIDUAL DE CADA ARMÁRIO ---------- */
+
+.bodyPageCabinet {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   min-height: 100vh;
+}
+
+/* ---------- COR DO BODY DE CADA ARMÁRIO ---------- */
+
+#bodyCabinet1 {
+    background-color: #a3bde6
+}
+
+#bodyCabinet2 {
+    background-color: #ff5c5c
+}
+
+#bodyCabinet3 {
+    background-color:#f8ec7d
+}
+
+#bodyCabinet4 {
+    background-color: #4caf50
+}
+
+
+/* HEADER */
+
+.headerPageCabinet{
+    display: grid;
+    grid-template-columns: 1fr 2.8fr;
+    width: 100%;
+}
+
+.title h1 {
+    font-family: 'Roboto Slab', serif;
+    /* text-align: center; */
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+.buttonBackHeader{
+    padding: 10px 30px 0px 40px;
+}
+
+.buttonBackHeader img{
+    width: 30px;
+    height: 30px;
+}
+
+
+/* ---------- COR DO HEADER DE CADA ARMÁRIO ---------- */
+
+#headerPageCabinet1 {
+    background-color: #0e4194
+}
+
+#headerPageCabinet2 {
+    background-color: #a20909
+}
+
+#headerPageCabinet3 {
+    background-color: #8f8103;
+}
+
+#headerPageCabinet4 {
+    background-color: #004703
+}
+
+
+/* ---------- CONTAINER DO ARMÁRIO ---------- */
+
+.containerCabinet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* background-color: aqua; */
+    width: 100%;
+    height: 70vh;
+}
+
+/* ---------- COLUNAS DO ARMÁRIO ---------- */
+
+.cabinetColumn1{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* background-color: rgb(71, 255, 80); */
+}
+
+.cabinetColumn2{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* background-color: tomato; */
+}
+
+.cabinetColumn3{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* background-color: rgb(74, 71, 255); */
+}
+
+/* ---------- CÉLULAS DO ARMÁRIO ---------- */
+
+.cell{
+    background-color: rgb(253, 253, 253);
+    height: 15vh;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+}
+
+.cell h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: #000000;
+}
+
+.cell p {
+    text-align: center;
+    margin-top: 15px;
+    color: #000000;
+}
+
+/* CORES DAS CÉLULAS ATRIBUIDAS COM A LÓGICA DO JAVASCRIPT*/
+
+.cellRed{
+    background-color: #ff3131;
+}
+
+.cellYellow{
+    background-color: #ffeb3b;
+}
+
+.cellGreen{
+    background-color: #4caf50;
+}
+
+/* ---------- FOOTER DE TODAS AS PÁGINAS ---------- */
+
+footer {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(135deg, #0e4194, #a3bde6);
+    text-align: center;
+}
+
+footer p {
+    color: #ffffff;
+    font-size: 12px;
+    padding: 5px 0 5px 5px;
+}
+
+footer img {
+    width: 120px;
+    height: auto;
+}
