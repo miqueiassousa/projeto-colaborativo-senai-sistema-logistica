@@ -18,11 +18,8 @@ const passwordInput = document.getElementById("password");
 togglePassword.addEventListener("click", () => {
     const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
     passwordInput.setAttribute("type", type);
-
-    // Alterna o ícone caso queira
     togglePassword.textContent = type === "password" ? "👁‍🗨" : "👁";
 });
-
 
 function forgotPassword() {
     forgotPasswordPopup();
@@ -145,10 +142,11 @@ back.addEventListener('click', backSlider);
 window.addEventListener('resize', initSlider);
 window.addEventListener('load', initSlider);
 
-// ---------- POPUP DE ESTOQUE ---------- //
+// ---------- POPUP DE ESTOQUE COM LIMITES ---------- //
 function abrirPopup(elemento) {
     const nomeProduto = elemento.dataset.product;
     let quantidadeEstoque = parseInt(elemento.dataset.amount);
+    const maxEstoque = 999; // limite máximo
 
     const popupFundo = document.createElement("div");
     Object.assign(popupFundo.style, {
@@ -184,7 +182,7 @@ function abrirPopup(elemento) {
     });
 
     function atualizarPreview() {
-        estoqueInfo.textContent = `Estoque final previsto: ${quantidadeEstoque + valorAtual}`;
+        estoqueInfo.textContent = `Estoque final previsto: ${Math.min(Math.max(quantidadeEstoque + valorAtual,0), maxEstoque)}`;
         valorDisplay.style.color = valorAtual < 0 ? "#dc3545" : valorAtual > 0 ? "#28a745" : "#000";
     }
 
@@ -207,15 +205,37 @@ function abrirPopup(elemento) {
     const botaoMais = document.createElement("button");
     botaoMais.textContent = "+";
     estilizarBotao(botaoMais, "#28a745");
-    botaoMais.onclick = () => { valorAtual++; valorDisplay.textContent = valorAtual; atualizarPreview(); };
+    botaoMais.onclick = () => { 
+        if (quantidadeEstoque + valorAtual < maxEstoque) valorAtual++; 
+        valorDisplay.textContent = valorAtual; 
+        atualizarPreview(); 
+    };
 
     const botaoMenos = document.createElement("button");
     botaoMenos.textContent = "−";
     estilizarBotao(botaoMenos, "#dc3545");
     botaoMenos.onclick = () => { 
-        if (valorAtual > -quantidadeEstoque) { 
-            valorAtual--; valorDisplay.textContent = valorAtual; atualizarPreview(); 
-        } 
+        if (quantidadeEstoque + valorAtual > 0) valorAtual--; 
+        valorDisplay.textContent = valorAtual; 
+        atualizarPreview(); 
+    };
+
+    const botaoMais10 = document.createElement("button");
+    botaoMais10.textContent = "+10";
+    estilizarBotao(botaoMais10, "#28a745");
+    botaoMais10.onclick = () => { 
+        valorAtual += Math.min(10, maxEstoque - (quantidadeEstoque + valorAtual)); 
+        valorDisplay.textContent = valorAtual; 
+        atualizarPreview(); 
+    };
+
+    const botaoMenos10 = document.createElement("button");
+    botaoMenos10.textContent = "-10";
+    estilizarBotao(botaoMenos10, "#dc3545");
+    botaoMenos10.onclick = () => { 
+        valorAtual -= Math.min(10, quantidadeEstoque + valorAtual); 
+        valorDisplay.textContent = valorAtual; 
+        atualizarPreview(); 
     };
 
     const botoesContainer = document.createElement("div");
@@ -223,9 +243,10 @@ function abrirPopup(elemento) {
         margin: "15px 0",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        gap: "10px"
     });
-    botoesContainer.append(botaoMenos, valorDisplay, botaoMais);
+    botoesContainer.append(botaoMenos10, botaoMenos, valorDisplay, botaoMais, botaoMais10);
 
     const botoesAcoes = document.createElement("div");
     Object.assign(botoesAcoes.style, {
@@ -253,9 +274,7 @@ function abrirPopup(elemento) {
         fontSize: "16px", cursor: "pointer"
     });
 
-    // ---------- CONFIRMAÇÃO COM BOTÃO DESFAZER ----------
     botaoConfirmar.onclick = () => {
-        // Cria popup de confirmação
         const popupFundoConfirm = document.createElement("div");
         Object.assign(popupFundoConfirm.style, {
             position: "fixed",
@@ -311,8 +330,7 @@ function abrirPopup(elemento) {
         });
 
         btnConfirmarFinal.onclick = () => {
-            // Aplica alteração
-            quantidadeEstoque += valorAtual;
+            quantidadeEstoque = Math.min(Math.max(quantidadeEstoque + valorAtual, 0), maxEstoque);
             elemento.dataset.amount = quantidadeEstoque;
 
             const p = elemento.querySelector("p");
@@ -351,4 +369,4 @@ function abrirPopup(elemento) {
         if (e.target === popupFundo) document.body.removeChild(popupFundo);
     });
 }
-// ---------- FIM DO CÓDIGO ---------- // 
+// ---------- FIM DO CÓDIGO ---------- //
