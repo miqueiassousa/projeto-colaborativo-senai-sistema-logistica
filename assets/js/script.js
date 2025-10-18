@@ -12,10 +12,17 @@ function login() {
 }
 
 // Mostrar/esconder senha
-function togglePassword(show) {
-    const passwordInput = document.getElementById("password");
-    passwordInput.type = show ? "text" : "password";
-}
+const togglePassword = document.getElementById("togglePassword");
+const passwordInput = document.getElementById("password");
+
+togglePassword.addEventListener("click", () => {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    // Alterna o ícone caso queira
+    togglePassword.textContent = type === "password" ? "👁‍🗨" : "👁";
+});
+
 
 function forgotPassword() {
     forgotPasswordPopup();
@@ -344,4 +351,4 @@ function abrirPopup(elemento) {
         if (e.target === popupFundo) document.body.removeChild(popupFundo);
     });
 }
-// ---------- FIM DO CÓDIGO ---------- //
+// ---------- FIM DO CÓDIGO ---------- // 

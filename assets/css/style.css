@@ -333,3 +333,78 @@ footer img { width: 120px; height: auto; }
     .slider { flex: 0 0 23%; display: block !important; }
     #next, #back { display: none; }
 }
+/* =========================
+   PATCH: corrigir zoom dos armários
+   ========================= */
+
+body.bodyPageCabinet,
+.bodyPageCabinet {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    box-sizing: border-box;
+}
+
+
+.bodyPageCabinet > .containerCabinet,
+#bodyCabinet1 > .containerCabinet,
+#bodyCabinet2 > .containerCabinet,
+#bodyCabinet3 > .containerCabinet,
+#bodyCabinet4 > .containerCabinet {
+    flex: 1 1 auto;      
+    overflow: auto;     
+    height: auto !important;
+    max-height: none !important;
+    -webkit-overflow-scrolling: touch;
+   
+    box-sizing: border-box;
+}
+
+
+.containerCabinet .cell,
+.bodyPageCabinet .containerCabinet .cell {
+    height: auto !important;   
+    min-height: 110px;        
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+/* Garante que o footer não seja empurrado para fora e não encolha */
+footer,
+.bodyPageCabinet footer {
+    flex-shrink: 0;
+}
+
+@media (max-width: 950px) {
+    .containerCabinet {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+@media (max-width: 600px) {
+    .containerCabinet {
+        grid-template-columns: 1fr; 
+    }
+
+    .containerCabinet .cell { min-height: 100px; }
+}
+/* =========================
+   PATCH: Corrigir altura real da tela e footer sticky
+   ========================= */
+
+.bodyPageCabinet {
+    min-height: 100dvh; 
+    display: flex;
+    flex-direction: column;
+}
+
+.bodyPageCabinet > .containerCabinet {
+    flex: 1; 
+    overflow: auto;
+}
+
+
+@supports not (height: 100dvh) {
+    .bodyPageCabinet {
+        min-height: calc(100vh - 50px); 
+    }
+}
