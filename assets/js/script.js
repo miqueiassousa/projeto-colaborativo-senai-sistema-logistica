@@ -11,16 +11,23 @@ function login() {
     }
 }
 
-// Mostrar/esconder senha
-const togglePassword = document.getElementById("togglePassword");
-const passwordInput = document.getElementById("password");
+// ---------- Mostrar/esconder senha ---------- //
+document.addEventListener("DOMContentLoaded", () => {
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
 
-togglePassword.addEventListener("click", () => {
-    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-    passwordInput.setAttribute("type", type);
-    togglePassword.textContent = type === "password" ? "👁‍🗨" : "👁";
+    if (togglePassword && passwordInput) {
+        togglePassword.addEventListener("click", () => {
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
+            togglePassword.textContent = type === "password" ? "👁‍🗨" : "👁";
+        });
+    } else {
+        console.warn("togglePassword ou passwordInput não encontrados!");
+    }
 });
 
+// ---------- Esqueci a senha ---------- //
 function forgotPassword() {
     forgotPasswordPopup();
 }
@@ -101,10 +108,8 @@ function initSlider() {
         slider.forEach(item => item.classList.remove('on'));
         currentSlide = 0;
 
-        const visibleSlides = width >= 600 ? 2 : 1;
-        for (let i = 0; i < visibleSlides && i < slider.length; i++) {
-            slider[i].classList.add('on');
-        }
+        const visibleSlides = 1; // sempre 1 slide no mobile
+        slider[currentSlide].classList.add('on');
 
         next.style.display = "block";
         back.style.display = "block";
@@ -112,29 +117,17 @@ function initSlider() {
 }
 
 function nextSlider() {
-    const width = window.innerWidth;
-    const visibleSlides = width >= 600 ? 2 : 1;
-
     hideSlider();
-    currentSlide += visibleSlides;
+    currentSlide++;
     if (currentSlide >= slider.length) currentSlide = 0;
-
-    for (let i = currentSlide; i < currentSlide + visibleSlides && i < slider.length; i++) {
-        slider[i].classList.add('on');
-    }
+    slider[currentSlide].classList.add('on');
 }
 
 function backSlider() {
-    const width = window.innerWidth;
-    const visibleSlides = width >= 600 ? 2 : 1;
-
     hideSlider();
-    currentSlide -= visibleSlides;
-    if (currentSlide < 0) currentSlide = slider.length - visibleSlides;
-
-    for (let i = currentSlide; i < currentSlide + visibleSlides && i < slider.length; i++) {
-        slider[i].classList.add('on');
-    }
+    currentSlide--;
+    if (currentSlide < 0) currentSlide = slider.length - 1;
+    slider[currentSlide].classList.add('on');
 }
 
 next.addEventListener('click', nextSlider);
@@ -142,11 +135,10 @@ back.addEventListener('click', backSlider);
 window.addEventListener('resize', initSlider);
 window.addEventListener('load', initSlider);
 
-// ---------- POPUP DE ESTOQUE COM LIMITES ---------- //
+// ---------- POPUP DE ESTOQUE ---------- //
 function abrirPopup(elemento) {
     const nomeProduto = elemento.dataset.product;
     let quantidadeEstoque = parseInt(elemento.dataset.amount);
-    const maxEstoque = 999; // limite máximo
 
     const popupFundo = document.createElement("div");
     Object.assign(popupFundo.style, {
@@ -182,7 +174,7 @@ function abrirPopup(elemento) {
     });
 
     function atualizarPreview() {
-        estoqueInfo.textContent = `Estoque final previsto: ${Math.min(Math.max(quantidadeEstoque + valorAtual,0), maxEstoque)}`;
+        estoqueInfo.textContent = `Estoque final previsto: ${quantidadeEstoque + valorAtual}`;
         valorDisplay.style.color = valorAtual < 0 ? "#dc3545" : valorAtual > 0 ? "#28a745" : "#000";
     }
 
@@ -206,25 +198,30 @@ function abrirPopup(elemento) {
     botaoMais.textContent = "+";
     estilizarBotao(botaoMais, "#28a745");
     botaoMais.onclick = () => { 
-        if (quantidadeEstoque + valorAtual < maxEstoque) valorAtual++; 
-        valorDisplay.textContent = valorAtual; 
-        atualizarPreview(); 
+        if (valorAtual < quantidadeEstoque) { 
+            valorAtual++; 
+            valorDisplay.textContent = valorAtual; 
+            atualizarPreview(); 
+        }
     };
 
     const botaoMenos = document.createElement("button");
     botaoMenos.textContent = "−";
     estilizarBotao(botaoMenos, "#dc3545");
     botaoMenos.onclick = () => { 
-        if (quantidadeEstoque + valorAtual > 0) valorAtual--; 
-        valorDisplay.textContent = valorAtual; 
-        atualizarPreview(); 
+        if (valorAtual > -quantidadeEstoque) { 
+            valorAtual--; 
+            valorDisplay.textContent = valorAtual; 
+            atualizarPreview(); 
+        } 
     };
 
     const botaoMais10 = document.createElement("button");
     botaoMais10.textContent = "+10";
     estilizarBotao(botaoMais10, "#28a745");
     botaoMais10.onclick = () => { 
-        valorAtual += Math.min(10, maxEstoque - (quantidadeEstoque + valorAtual)); 
+        if (valorAtual + 10 <= quantidadeEstoque) valorAtual += 10;
+        else valorAtual = quantidadeEstoque; 
         valorDisplay.textContent = valorAtual; 
         atualizarPreview(); 
     };
@@ -233,7 +230,8 @@ function abrirPopup(elemento) {
     botaoMenos10.textContent = "-10";
     estilizarBotao(botaoMenos10, "#dc3545");
     botaoMenos10.onclick = () => { 
-        valorAtual -= Math.min(10, quantidadeEstoque + valorAtual); 
+        if (valorAtual - 10 >= -quantidadeEstoque) valorAtual -= 10;
+        else valorAtual = -quantidadeEstoque; 
         valorDisplay.textContent = valorAtual; 
         atualizarPreview(); 
     };
@@ -274,6 +272,7 @@ function abrirPopup(elemento) {
         fontSize: "16px", cursor: "pointer"
     });
 
+    // ---------- CONFIRMAÇÃO COM BOTÃO DESFAZER ----------
     botaoConfirmar.onclick = () => {
         const popupFundoConfirm = document.createElement("div");
         Object.assign(popupFundoConfirm.style, {
@@ -330,7 +329,7 @@ function abrirPopup(elemento) {
         });
 
         btnConfirmarFinal.onclick = () => {
-            quantidadeEstoque = Math.min(Math.max(quantidadeEstoque + valorAtual, 0), maxEstoque);
+            quantidadeEstoque += valorAtual;
             elemento.dataset.amount = quantidadeEstoque;
 
             const p = elemento.querySelector("p");
@@ -369,4 +368,6 @@ function abrirPopup(elemento) {
         if (e.target === popupFundo) document.body.removeChild(popupFundo);
     });
 }
-// ---------- FIM DO CÓDIGO ---------- //
+
+// ---------- FIM DO CÓDIGO ----------
+
