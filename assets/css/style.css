@@ -275,6 +275,7 @@
 }
 
 
+<<<<<<< HEAD
 /* ---------- RESPONSIVIDADE ---------- */
 
 /* Tablet: mostrar 2 slides */
@@ -312,6 +313,8 @@
     }
 }
 
+=======
+>>>>>>> main
 /* ---------- PÁGINA INDIVIDUAL DE CADA ARMÁRIO ---------- */
 
 .bodyPageCabinet {
@@ -345,19 +348,31 @@
 
 .headerPageCabinet{
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: 1fr 2.8fr;
+=======
+    grid-template-columns: 1fr 2.6fr;
+>>>>>>> main
     width: 100%;
 }
 
 .title h1 {
     font-family: 'Roboto Slab', serif;
+<<<<<<< HEAD
     /* text-align: center; */
+=======
+>>>>>>> main
     font-size: 2.5em;
     color: #ffffff;
+    /* background-color: #f8ec7d; */
 }
 
 .buttonBackHeader{
     padding: 10px 30px 0px 40px;
+<<<<<<< HEAD
+=======
+    /* background-color: aqua; */
+>>>>>>> main
 }
 
 .buttonBackHeader img{
@@ -366,7 +381,11 @@
 }
 
 
+<<<<<<< HEAD
 /* ---------- COR DO HEADER DE CADA ARMÁRIO ---------- */
+=======
+/* COR DO HEADER DE CADA ARMÁRIO */
+>>>>>>> main
 
 #headerPageCabinet1 {
     background-color: #0e4194
@@ -475,4 +494,53 @@ footer p {
 footer img {
     width: 120px;
     height: auto;
+<<<<<<< HEAD
 }
+=======
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+
+/* Tablet: mostrar 2 slides */
+@media (min-width: 600px) and (max-width: 932px) {
+
+    #headerMainPage{
+        height: 20vh;
+    }
+
+    .slider {
+        flex: 0 0 48%;
+    }
+}
+
+/* Desktop: mostrar 4 slides */
+@media (min-width: 933px) {
+
+
+    #headerMainPage{
+        height: 15vh;
+    }
+
+    .bodyPageCabinet .headerPageCabinet{
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        width: 100%;
+    }
+
+    .containerSlider {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .slider {
+        flex: 0 0 23%;
+        display: block !important; /* todos visíveis */
+    }
+
+    /* Oculta botões */
+    #next, #back {
+        display: none;
+    }
+}
+
+>>>>>>> main
