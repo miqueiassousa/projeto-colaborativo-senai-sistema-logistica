@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             togglePassword.textContent = type === "password" ? "👁‍🗨" : "👁";
         });
     } else {
-        console.warn("togglePassword ou passwordInput não encontrados!");
+        console.log("togglePassword ou passwordInput não encontrados!");
     }
 });
 
