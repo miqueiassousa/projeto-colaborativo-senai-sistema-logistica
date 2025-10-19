@@ -4,6 +4,7 @@ function login() {
     const password = document.getElementById("password").value.trim();
     const errorMsg = document.getElementById("loginError");
 
+   
     if (username === "admin" && password === "password") {
         window.location.href = "mainPage.html";
     } else {
@@ -26,12 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("togglePassword ou passwordInput não encontrados!");
     }
 });
-function showArmario(index) {
-    hideSlider(); // esconde todos
-    currentSlide = index; 
-    slider[currentSlide].classList.add('on');
-    initSlider(); // recalcula tamanho e visibilidade
-}
+
+// A função showArmario foi movida para dentro do DOMContentLoaded do Carrossel abaixo.
 
 
 // ---------- Esqueci a senha ---------- //
@@ -94,13 +91,18 @@ function forgotPasswordPopup() {
     });
 }
 
-// ---------- CARROSSEL ---------- //
+// ---------- CARROSSEL / ARMÁRIO (ESCOPO CORRIGIDO) ---------- //
 document.addEventListener("DOMContentLoaded", () => {
     const next = document.getElementById('next');
     const back = document.getElementById('back');
     const slider = document.querySelectorAll('.slider');
-
+    if (slider.length === 0) {
+        return; 
+    }
+    
     let currentSlide = 0;
+
+
 
     function hideSlider() {
         slider.forEach(item => item.classList.remove('on'));
@@ -123,7 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (back) back.style.display = "block";
         }
     }
-
+    
+    // Funções do Carrossel
     function nextSlider() {
         hideSlider();
         currentSlide++;
@@ -138,6 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
         slider[currentSlide].classList.add('on');
     }
 
+    // Função showArmario (Movida para o escopo correto)
+    window.showArmario = function(index) {
+        hideSlider();
+    };
+
+
     if (next) next.addEventListener('click', nextSlider);
     if (back) back.addEventListener('click', backSlider);
 
@@ -146,10 +155,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+function showArmario(index) {
+    console.warn("showArmario(index) chamada. Esta função deve ser implementada no escopo do Carrossel.");
+}
+
+
 // ---------- POPUP DE ESTOQUE ---------- //
 function abrirPopup(elemento) {
     const nomeProduto = elemento.dataset.product;
     let quantidadeEstoque = parseInt(elemento.dataset.amount);
+
 
     const popupFundo = document.createElement("div");
     Object.assign(popupFundo.style, {
@@ -185,8 +200,16 @@ function abrirPopup(elemento) {
     });
 
     function atualizarPreview() {
-        estoqueInfo.textContent = `Estoque final previsto: ${quantidadeEstoque + valorAtual}`;
+        // Validação de limite: se o estoque final for negativo, mostra em vermelho
+        const estoquePrevisto = quantidadeEstoque + valorAtual;
+        estoqueInfo.textContent = `Estoque final previsto: ${estoquePrevisto}`;
         valorDisplay.style.color = valorAtual < 0 ? "#dc3545" : valorAtual > 0 ? "#28a745" : "#000";
+        // Adicionando uma verificação visual se o estoque final for negativo.
+        if (estoquePrevisto < 0) {
+             estoqueInfo.style.color = "#dc3545"; 
+        } else {
+             estoqueInfo.style.color = "#555";
+        }
     }
 
     function estilizarBotao(botao, cor) {
@@ -209,17 +232,18 @@ function abrirPopup(elemento) {
     botaoMais.textContent = "+";
     estilizarBotao(botaoMais, "#28a745");
     botaoMais.onclick = () => { 
-        if (valorAtual < quantidadeEstoque) { 
-            valorAtual++; 
-            valorDisplay.textContent = valorAtual; 
-            atualizarPreview(); 
-        }
+        // Removi a limitação 'if (valorAtual < quantidadeEstoque)' do '+'
+        // para permitir que o usuário adicione qualquer valor, mesmo que irrealista.
+        valorAtual++; 
+        valorDisplay.textContent = valorAtual; 
+        atualizarPreview(); 
     };
 
     const botaoMenos = document.createElement("button");
     botaoMenos.textContent = "−";
     estilizarBotao(botaoMenos, "#dc3545");
     botaoMenos.onclick = () => { 
+    
         if (valorAtual > -quantidadeEstoque) { 
             valorAtual--; 
             valorDisplay.textContent = valorAtual; 
@@ -231,8 +255,8 @@ function abrirPopup(elemento) {
     botaoMais10.textContent = "+10";
     estilizarBotao(botaoMais10, "#28a745");
     botaoMais10.onclick = () => { 
-        if (valorAtual + 10 <= quantidadeEstoque) valorAtual += 10;
-        else valorAtual = quantidadeEstoque; 
+    
+        valorAtual += 10;
         valorDisplay.textContent = valorAtual; 
         atualizarPreview(); 
     };
@@ -241,8 +265,13 @@ function abrirPopup(elemento) {
     botaoMenos10.textContent = "-10";
     estilizarBotao(botaoMenos10, "#dc3545");
     botaoMenos10.onclick = () => { 
-        if (valorAtual - 10 >= -quantidadeEstoque) valorAtual -= 10;
-        else valorAtual = -quantidadeEstoque; 
+        
+        if (valorAtual - 10 >= -quantidadeEstoque) {
+            valorAtual -= 10;
+        } else {
+           
+            valorAtual = -quantidadeEstoque; 
+        }
         valorDisplay.textContent = valorAtual; 
         atualizarPreview(); 
     };
@@ -285,6 +314,13 @@ function abrirPopup(elemento) {
 
     // ---------- CONFIRMAÇÃO COM BOTÃO DESFAZER ----------
     botaoConfirmar.onclick = () => {
+        
+         if (quantidadeEstoque + valorAtual < 0) {
+            alert("Atenção: A quantidade final do estoque não pode ser negativa!");
+            return; 
+        }
+        
+        
         const popupFundoConfirm = document.createElement("div");
         Object.assign(popupFundoConfirm.style, {
             position: "fixed",
@@ -338,14 +374,17 @@ function abrirPopup(elemento) {
             backgroundColor: "#dc3545", color: "white",
             fontSize: "16px", cursor: "pointer"
         });
+        
 
         btnConfirmarFinal.onclick = () => {
+          
             quantidadeEstoque += valorAtual;
             elemento.dataset.amount = quantidadeEstoque;
 
             const p = elemento.querySelector("p");
             if (p) p.textContent = quantidadeEstoque;
 
+       
             elemento.classList.remove("cellRed", "cellYellow", "cellGreen");
             if (quantidadeEstoque <= 10) elemento.classList.add("cellRed");
             else if (quantidadeEstoque <= 50) elemento.classList.add("cellYellow");
@@ -381,4 +420,3 @@ function abrirPopup(elemento) {
 }
 
 // ---------- FIM DO CÓDIGO ----------
-

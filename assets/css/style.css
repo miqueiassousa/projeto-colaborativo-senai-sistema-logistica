@@ -242,8 +242,13 @@
 .buttonsCarrousel { flex: 0 0 40px; border: none; background-color: var(--color-white); cursor: pointer; padding: 5px; border-radius: 6px; }
 .buttonsCarrousel img { width: 100%; height: 100%; }
 
-/* ---------- ARMÁRIOS ---------- */
-.bodyPageCabinet { display: flex; flex-direction: column; justify-content: space-between; align-items: center; min-height: 100vh; }
+/* ---------- ARMÁRIOS (Corrigido e Otimizado) ---------- */
+.bodyPageCabinet { 
+    display: flex; 
+    flex-direction: column; 
+    /* Usa a altura real da viewport */
+    min-height: 100dvh; 
+}
 #bodyCabinet1 { background-color: var(--color-primary-light); }
 #bodyCabinet2 { background-color: #ff5c5c; }
 #bodyCabinet3 { background-color: #f8ec7d; }
@@ -252,7 +257,7 @@
 .headerPageCabinet { display: flex; justify-content: center; align-items: center; text-align: center; width: 100%; }
 .title h1 { font-family: 'Roboto Slab', serif; font-size: 2.5em; color: var(--color-white); }
 
-.buttonBackHeader { position: fixed; top: 11px; left: 16px; }
+.buttonBackHeader { position: fixed; top: 11px; left: 16px; z-index: 200; }
 .buttonBackHeader img { width: 30px; height: 30px; }
 
 #headerPageCabinet1 { background-color: var(--color-primary); }
@@ -260,16 +265,37 @@
 #headerPageCabinet3 { background-color: #8f8103; }
 #headerPageCabinet4 { background-color: #004703; }
 
-.containerCabinet { display: grid; grid-template-columns: repeat(3,1fr); width: 100%; height: 70vh; }
+.containerCabinet { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    /* Garante 4 linhas com distribuição igual de altura */
+    grid-template-rows: repeat(4, 1fr); 
+    width: 100%; 
+    /* Permite que o container ocupe todo o espaço vertical disponível */
+    flex: 1; 
+    
+    /* VALORES PADRÃO (DESKTOP) */
+    gap: 20px;    /* Espaço entre as células */
+    padding: 30px; /* Padding nas bordas do container */
+}
+
+/* Removemos as classes cabinetColumn1, 2 e 3 do CSS e usamos display: contents para não quebrar o HTML */
 .cabinetColumn1,
 .cabinetColumn2,
-.cabinetColumn3 { display: grid; grid-template-rows: repeat(4,1fr); }
+.cabinetColumn3 { 
+    display: contents; 
+}
+
 
 /* CÉLULAS */
 .cell {
     background: linear-gradient(145deg, #fff, #f0f0f0);
-    height: 15vh;
-    margin: 10px;
+    /* Usa 100% da altura da linha do grid */
+    height: 100%; 
+    
+    /* CORREÇÃO CRÍTICA: MARGEM REMOVIDA (o gap faz o espaçamento) */
+    margin: 0; 
+    
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -279,6 +305,7 @@
     align-items: center;
     cursor: pointer;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .cell:hover {
@@ -312,11 +339,11 @@
 /* FOOTER */
 /* FOOTER FIXO */
 footer {
-    position: fixed;          /* Fixa o footer na tela */
-    bottom: 0;                /* Na parte inferior */
-    left: 0;                  /* Alinha à esquerda */
-    width: 100%;              /* Ocupa toda a largura */
-    height: 60px;             /* Defina a altura que quiser */
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 60px; 
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -324,17 +351,18 @@ footer {
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
     z-index: 100;
+    flex-shrink: 0; 
 }
 
 /* ADICIONA ESPAÇO NO CONTEÚDO PARA NÃO FICAR SOB O FOOTER */
 body, #mainPageBody, .bodyPageCabinet {
-    padding-bottom: 60px; /* igual à altura do footer */
+    padding-bottom: 60px; 
 }
 
 footer p { color: var(--color-white); font-size: 12px; padding: 5px 0 5px 5px; }
 footer img { width: 120px; height: auto; }
 
-/* ---------- RESPONSIVIDADE ---------- */
+/* ---------- RESPONSIVIDADE GERAL ---------- */
 @media (min-width: 600px) and (max-width: 932px) {
     #headerMainPage { height: 20vh; }
     .slider { flex: 0 0 48%; }
@@ -346,89 +374,30 @@ footer img { width: 120px; height: auto; }
     .slider { flex: 0 0 23%; display: block !important; }
     #next, #back { display: none; }
 }
+
 /* =========================
-   PATCH: corrigir zoom dos armários
-   ========================= */
-
-body.bodyPageCabinet,
-.bodyPageCabinet {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-    box-sizing: border-box;
-}
-
-
-.bodyPageCabinet > .containerCabinet,
-#bodyCabinet1 > .containerCabinet,
-#bodyCabinet2 > .containerCabinet,
-#bodyCabinet3 > .containerCabinet,
-#bodyCabinet4 > .containerCabinet {
-    flex: 1 1 auto;      
-    overflow: auto;     
-    height: auto !important;
-    max-height: none !important;
-    -webkit-overflow-scrolling: touch;
-   
-    box-sizing: border-box;
-}
-
-
-.containerCabinet .cell,
-.bodyPageCabinet .containerCabinet .cell {
-    height: auto !important;   
-    min-height: 110px;        
-    margin: 10px;
-    box-sizing: border-box;
-}
-
-/* Garante que o footer não seja empurrado para fora e não encolha */
-footer,
-.bodyPageCabinet footer {
-    flex-shrink: 0;
-}
-
-@media (max-width: 950px) {
-    .containerCabinet {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
-@media (max-width: 600px) {
-    .containerCabinet {
-        grid-template-columns: 1fr; 
-    }
-
-    .containerCabinet .cell { min-height: 100px; }
-}
-/* =========================
-   PATCH: Corrigir altura real da tela e footer sticky
-   ========================= */
-
-.bodyPageCabinet {
-    min-height: 100dvh; 
-    display: flex;
-    flex-direction: column;
-}
+    REGRAS DE RESPONSIVIDADE DO ARMÁRIO (Mobile)
+    ========================= */
 
 .bodyPageCabinet > .containerCabinet {
-    flex: 1; 
-    overflow: auto;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: hidden; 
 }
 
-
-@supports not (height: 100dvh) {
-    .bodyPageCabinet {
-        min-height: calc(100vh - 50px); 
-    }
-}
-@media (max-width: 600px) {
+@media (max-width: 992px) {
     .containerCabinet {
+        /* Garante o 3x4 no mobile */
         grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        
+        /* VALORES MOBILE */
         gap: 10px;
-        padding: 0 10px; 
+        padding: 15px;
     }
 
     .containerCabinet .cell {
-        min-height: 120px;
-}
+        margin: 0; 
+        min-height: auto;
+    }
 }
