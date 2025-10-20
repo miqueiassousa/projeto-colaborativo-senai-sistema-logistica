@@ -1,0 +1,204 @@
+{
+  "cabinets": {
+    "Cabinet1": {
+      "cell1Column1Cabinet1": {
+        "produto": "Fusível",
+        "quantidade": 17
+      },
+      "cell1Column2Cabinet1": {
+        "produto": "Marcador de cabo",
+        "quantidade": 22
+      },
+      "cell1Column3Cabinet1": {
+        "produto": "Sinaleiro verde",
+        "quantidade": 4
+      },
+      "cell2Column1Cabinet1": {
+        "produto": "Relé acoplador",
+        "quantidade": 43
+      },
+      "cell2Column2Cabinet1": {
+        "produto": "Sensor capacitivo",
+        "quantidade": 8
+      },
+      "cell2Column3Cabinet1": {
+        "produto": "Sinaleiro branco",
+        "quantidade": 16
+      },
+      "cell3Column1Cabinet1": {
+        "produto": "Chave alavanca",
+        "quantidade": 12
+      },
+      "cell3Column2Cabinet1": {
+        "produto": "Sensor de fim de curso",
+        "quantidade": 16
+      },
+      "cell3Column3Cabinet1": {
+        "produto": "Dobradiça de acrílico",
+        "quantidade": 52
+      },
+      "cell4Column1Cabinet1": {
+        "produto": "Cilindro pneumático",
+        "quantidade": 5
+      },
+      "cell4Column2Cabinet1": {
+        "produto": "Sinaleiro azul",
+        "quantidade": 15
+      },
+      "cell4Column3Cabinet1": {
+        "produto": "Terminal de fio",
+        "quantidade": 169
+      }
+    },
+    "Cabinet2": {
+      "cell1Column1Cabinet2": {
+        "produto": "Parafusos",
+        "quantidade": 123
+      },
+      "cell1Column2Cabinet2": {
+        "produto": "Peças de metal",
+        "quantidade": 14
+      },
+      "cell1Column3Cabinet2": {
+        "produto": "ITEM",
+        "quantidade": 6
+      },
+      "cell2Column1Cabinet2": {
+        "produto": "Válvula solenóide hidráulica",
+        "quantidade": 3
+      },
+      "cell2Column2Cabinet2": {
+        "produto": "Válvula solenóide pneumática",
+        "quantidade": 3
+      },
+      "cell2Column3Cabinet2": {
+        "produto": "ITEM",
+        "quantidade": 2
+      },
+      "cell3Column1Cabinet2": {
+        "produto": "ITEM",
+        "quantidade": 4
+      },
+      "cell3Column2Cabinet2": {
+        "produto": "Abraçadeira",
+        "quantidade": 40
+      },
+      "cell3Column3Cabinet2": {
+        "produto": "Conexão hidráulica",
+        "quantidade": 10
+      },
+      "cell4Column1Cabinet2": {
+        "produto": "Válvula solenóide pneumática",
+        "quantidade": 3
+      },
+      "cell4Column2Cabinet2": {
+        "produto": "ITEM",
+        "quantidade": 12
+      },
+      "cell4Column3Cabinet2": {
+        "produto": "Sinaleiro amarelo",
+        "quantidade": 11
+      }
+    },
+    "Cabinet3": {
+      "cell1Column1Cabinet3": {
+        "produto": "Sinaleiro vermelho",
+        "quantidade": 11
+      },
+      "cell1Column2Cabinet3": {
+        "produto": "Abraçadeira",
+        "quantidade": 1
+      },
+      "cell1Column3Cabinet3": {
+        "produto": "ITEM",
+        "quantidade": 0
+      },
+      "cell2Column1Cabinet3": {
+        "produto": "Botoeira preta",
+        "quantidade": 30
+      },
+      "cell2Column2Cabinet3": {
+        "produto": "Sinaleiro laranja",
+        "quantidade": 15
+      },
+      "cell2Column3Cabinet3": {
+        "produto": "Bloco de contato para botoeira",
+        "quantidade": 4
+      },
+      "cell3Column1Cabinet3": {
+        "produto": "Parafusos",
+        "quantidade": 230
+      },
+      "cell3Column2Cabinet3": {
+        "produto": "Lâminas para transformador",
+        "quantidade": 43
+      },
+      "cell3Column3Cabinet3": {
+        "produto": "Cabo Jumper",
+        "quantidade": 351
+      },
+      "cell4Column1Cabinet3": {
+        "produto": "Módulo tomada",
+        "quantidade": 23
+      },
+      "cell4Column2Cabinet3": {
+        "produto": "Sensor de nível",
+        "quantidade": 21
+      },
+      "cell4Column3Cabinet3": {
+        "produto": "Borne Sak",
+        "quantidade": 31
+      }
+    },
+    "Cabinet4": {
+      "cell1Column1Cabinet4": {
+        "produto": "Botoeira vermelha",
+        "quantidade": 14
+      },
+      "cell1Column2Cabinet4": {
+        "produto": "Botoeira verde",
+        "quantidade": 3
+      },
+      "cell1Column3Cabinet4": {
+        "produto": "Cabo Jumper",
+        "quantidade": 427
+      },
+      "cell2Column1Cabinet4": {
+        "produto": "Botoeira dupla",
+        "quantidade": 7
+      },
+      "cell2Column2Cabinet4": {
+        "produto": "Conexão pneumática",
+        "quantidade": 37
+      },
+      "cell2Column3Cabinet4": {
+        "produto": "Sensor indutivo",
+        "quantidade": 9
+      },
+      "cell3Column1Cabinet4": {
+        "produto": "Dobradiça de aço",
+        "quantidade": 19
+      },
+      "cell3Column2Cabinet4": {
+        "produto": "ITEM",
+        "quantidade": 34
+      },
+      "cell3Column3Cabinet4": {
+        "produto": "Borne de encadernação",
+        "quantidade": 75
+      },
+      "cell4Column1Cabinet4": {
+        "produto": "Sensor de pressão",
+        "quantidade": 10
+      },
+      "cell4Column2Cabinet4": {
+        "produto": "Borne banana macho",
+        "quantidade": 5
+      },
+      "cell4Column3Cabinet4": {
+        "produto": "Borne banana fêmea",
+        "quantidade": 63
+      }
+    }
+  }
+}
