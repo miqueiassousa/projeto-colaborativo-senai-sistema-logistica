@@ -278,10 +278,40 @@
    CADA ARMÁRIO
 ===================================================================== */
 .bodyPageCabinet {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    min-height: 100vh; /* garante altura mínima para o footer colar no fim */
+    overflow: hidden; /* evita que o pseudo-elemento vaze */
+}
+
+.bodyPageCabinet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(../images/backgroundMaker.jpg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.bodyPageCabinet > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+footer p {
+    color: var(--color-white);
+    font-size: 12px;
+    padding: 5px 0 5px 5px;
+}
+footer img {
+    width: 120px;
+    height: auto;
 }
 
 .headerPageCabinet {
@@ -311,6 +341,7 @@
     height: 70vh;
     margin-top: 40px;
 }
+
 .cabinetColumn1, .cabinetColumn2, .cabinetColumn3 {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
@@ -368,8 +399,11 @@ footer {
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
-    bottom: 0; left: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10; /* maior que o fundo translúcido */
 }
+
 footer p {
     color: var(--color-white);
     font-size: 12px;
