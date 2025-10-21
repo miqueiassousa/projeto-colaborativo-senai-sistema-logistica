@@ -4,7 +4,7 @@ function login() {
     const password = document.getElementById("password").value.trim();
     const errorMsg = document.getElementById("loginError");
 
-    if (username === "admin" && password === "password") {
+    if (username === "usuario" && password === "123") {
         window.location.href = "assets/pages/mainPage.html";
     } else {
         errorMsg.style.display = "block";
@@ -41,8 +41,8 @@ function forgotPassword() {
 
 // ---------- POPUP DE RECUPERAÇÃO DE SENHA ---------- //
 function forgotPasswordPopup() {
-    const usuario = "admin";
-    const senha = "password";
+    const usuario = "usuario";
+    const senha = "123";
 
     const popupFundo = document.createElement("div");
     Object.assign(popupFundo.style, {
